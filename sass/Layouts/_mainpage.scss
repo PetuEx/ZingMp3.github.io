@@ -1,6 +1,5 @@
 .main__page{
     width: 1360px;
-    overflow-y: auto;
     .main__page__header{
         padding: 0 30px;
         height: 70px;
@@ -155,6 +154,7 @@
     .main__page__overview{
         .main__page__user__profile__container{
             margin-top: 30px;
+            margin-bottom: 30px!important;
             position: relative;
             .main__page__user__profile{
                 .main__page__user__profile__avatar__wrapper{
