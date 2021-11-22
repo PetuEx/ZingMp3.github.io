@@ -1,0 +1,18 @@
+.content{
+    display: flex;
+    height: calc(100vh - 90px);
+    background-color: $layout-bg-color;
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+    .content__background__blur{
+        position: absolute;
+        width: 100vw;
+        height: calc(100vh - 90px);
+        top: -45%;
+        left: 48%;
+        transform: translateX(-50%);
+        z-index: -1;
+        filter: blur(130px);
+    }
+}

@@ -1,0 +1,453 @@
+.player__queue{
+   border-left: 1px solid rgba( 255,255,255,0.1 ); 
+   width: calc( 100vw - 240px - 1360px );
+   .player__queue__header{
+       height: 70px;
+       padding: 14px 0;
+       .player__queue__header__tab__bar{
+           display: flex;
+           align-items: center;
+           padding: 0 13px;
+           .player__queue__header__tab__bar__slidebar{
+               padding: 5px;
+               background-color: $gray-color-3;
+               border-radius: 100px;
+               display: flex;
+               .player__queue__header__tab__bar__slidebar__item.active{
+                   background-color: $gray-color-4;
+               }
+               .player__queue__header__tab__bar__slidebar__item{
+                   @include text-style( $fs-12 , $medium , $lh-1 , $white-color , center );
+                   padding: 6px 10px;
+                   border-radius: 100px;
+                   cursor: pointer;
+               }
+           }
+           .player__queue__header__tab__bar__options{
+               display: flex;
+               align-items: center;
+               .player__queue__header__tab__bar__options__coutdonw__wrapper{
+                   width: 32px;
+                   height: 32px;
+                   margin: 0 5px;
+                   border-radius: 50%;
+                   background-color: $purple-color;
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   .player__queue__header__tab__bar__options__coutdonw__icon{
+                       color: $white-color;
+                       font-size: 1rem;
+                       margin-bottom: 2px;
+                   }
+               }
+               .player__queue__header__tab__bar__options__more__wrapper{
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background-color: $gray-color-3;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .player__queue__header__tab__bar__options__more__icon{
+                        color: $gray-color-1;
+                        font-size: 1rem;
+                        margin-bottom: 1px;
+                    }
+               }
+           }
+       }
+   }
+   .player__queue__list{
+       .player__queue__songs{
+           display: flex;
+           flex-direction: column;
+           padding: 0 13px;
+           height: 280px;
+           overflow-y: auto;
+           .player__queue__song{
+               padding: 8px;
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               .player__queue__song__left{
+                   display: flex;
+                   .player__queue__song__img__wrapper{
+                       width: 40px;
+                       height: 40px;
+                       border-radius: 5px;
+                       margin-right: 10px;
+                       position: relative;
+                       .player__queue__song__img{
+                           width: 100%;
+                           height: 100%;
+                           border-radius: 5px;
+                           object-fit: cover;
+                       }
+                       .player__queue__song__play__icon{
+                           font-size: 1rem;
+                           color: $white-color;
+                           position: absolute;
+                           top: 50%;
+                           left: 50%;
+                           transform: translate(-50%,-50%);
+                           z-index: 2;
+                           display: none;
+                       }
+                   }
+                   .player__queue__song__img__wrapper::after{
+                       content: "";
+                       position: absolute;
+                       top: 0;
+                       left: 0;
+                       right: 0;
+                       bottom: 0;
+                       background-color: rgba( 0,0,0,0.2 );
+                       border-radius: 5px;
+                       z-index: 1;
+                       transition: all ease .25s;
+                   }
+                   .player__queue__song__data{
+                        .player__queue__song__name{
+                            @include text-style( $fs-14 , $medium , $lh-5 , rgba(255,255,255,0.7), left );
+                            transition: all ease .1s;
+                        }
+                        .player__queue__song__singer{
+                            @include text-style( $fs-12 , $medium , $lh-5 , $gray-color-2 , left );
+                        }
+                   }
+               }
+               .player__queue__song__right{
+                   display: flex;
+                   .player__queue__song__right__icon__wrapper{
+                       width: 30px;
+                       height: 30px;
+                       border-radius: 50%;
+                       display: flex;
+                       justify-content: center;
+                       align-items: center;
+                       margin: 0 2px;
+                       transition: all ease .1s;
+                       display: none;
+                       .player__queue__song__right__like__icon{
+                           font-size: 1rem;
+                           color: $purple-color;
+                           margin-top: 1px;
+                       }
+                       .player__queue__song__right__more__icon{
+                            font-size: 1rem;
+                            color: $gray-color-1;
+                       }
+                   }
+                   .player__queue__song__right__icon__wrapper:hover{
+                       background-color: $alpha-bg-color;
+                   }
+               }
+           }
+           .player__queue__song:hover{
+               background-color: $gray-color-3;
+               border-radius: 5px;
+               cursor: pointer;
+           }
+           .player__queue__song:hover .player__queue__song__right__icon__wrapper{
+               display: flex;
+               cursor: pointer;
+           }
+           .player__queue__song:hover .player__queue__song__img__wrapper .player__queue__song__play__icon{
+               display: block;
+           }
+           .player__queue__song:hover .player__queue__song__img__wrapper::after{
+                background-color: rgba( 0,0,0,0.4 );
+            }  
+            .player__queue__song:hover .player__queue__song__left .player__queue__song__data .player__queue__song__name{
+                color: $white-color;
+            }  
+       }
+       .player__queue__songs::-webkit-scrollbar{
+           width: 5px;
+           background-color: transparent;
+       }
+       .player__queue__songs::-webkit-scrollbar-thumb{
+            width: 3px;
+            background-color: $alpha-bg-color;
+            border-radius: 100px;
+        }
+   }
+   .player__queue__recommened{
+       padding: 20px 13px 0;
+       .player__queue__recommend__header{
+           display: flex;
+           justify-content: space-between;
+           padding: 0 8px;
+           .player__queue__recommend__header__left{
+               .player__queue__recommend__header__left__title{
+                   @include text-style( $fs-14 , $medium , $lh-3 , $white-color , left );
+               }
+           }
+           .player__queue__recommend__header__right{
+               display: flex;
+               .player__queue__recommend__header__right__switch{
+                   display: flex;
+                   align-items: center;
+                   padding: 0 15px;
+                   .player__queue__recommend__header__right__switch__status{
+                       @include text-style( $fs-10 , normal , 1 , $gray-color-1 , left );
+                   }
+                   .player__queue__recommend__header__right__switch__status__button{
+                       width: 24px;
+                       height: 15px;
+                       border-radius: 100px;
+                       background-color: $gray-color-2;
+                       position: relative;
+                       margin: 0 8px;
+                       cursor: pointer;
+                       .player__queue__recommend__header__right__switch__status__button__active{
+                           position: absolute;
+                           left: 0;
+                           top: 50%;
+                           transform: translateY(-50%);
+                           width: 13px;
+                           height: 13px;
+                           border-radius: 50%;
+                           background-color: $white-color;
+                           transition: all ease .25s;
+                       }
+                   }
+                   .player__queue__recommend__header__right__switch__status__button.active .player__queue__recommend__header__right__switch__status__button__active{
+                       left: calc(100% - 13px);
+                   }
+               }
+               .player__queue__recommend__header__right__refresh__wrapper{
+                   position: relative;
+                   .player__queue__recommend__header__right__refresh__icon{
+                       font-size: 1rem;
+                       color: $white-color;
+                       transition: all ease .25s;
+                   }
+                   .player__queue__recommend__header__right__refresh__icon:hover{
+                       color: $purple-color;
+                       cursor: pointer;
+                   }
+               }
+           }
+       }
+       .player__queue__recommened__songs{
+           display: flex;
+           flex-direction: column;
+           .player__queue__recommened__song{
+               padding: 8px;
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+               transition: all ease .1s;
+               .player__queue__recommened__song__left{
+                   display: flex;
+                   .player__queue__recommened__song__img__wrapper{
+                       width: 40px;
+                       height: 40px;
+                       border-radius: 5px;
+                       margin-right: 10px;
+                       position: relative;
+                       .player__queue__recommened__song__img{
+                           width: 100%;
+                           height: 100%;
+                           object-fit: cover;
+                           border-radius: 5px;
+                       }
+                       .player__queue__recommened__song__icon{
+                           position: absolute;
+                           top: 50%;
+                           left: 50%;
+                           transform: translate(-50%,-50%);
+                           font-size: 1rem;
+                           color: $white-color;
+                           z-index: 2;
+                           display: none;
+                       }
+                   }
+                   .player__queue__recommened__song__img__wrapper::after{
+                       content: "";
+                       position: absolute;
+                       top: 0;
+                       bottom: 0;
+                       left: 0;
+                       right: 0;
+                       border-radius: 5px;
+                       background-color: rgba( 0,0,0,0.2 );
+                       z-index: 1;
+                       transition: all ease .1s;
+                   }
+                   .player__queue__recommened__song__data{
+                        .player__queue__recommened__song__name{
+                            @include text-style( $fs-14 , $medium , $lh-5 , $white-color , left );
+                        }
+                        .player__queue__recommened__song__singer{
+                            @include text-style( $fs-12 , $medium , $lh-5 , $gray-color-2 , left );
+                        }
+                   }
+               }
+               .player__queue__recommened__song__right{
+                    display: flex;
+                    .player__queue__recommened__song__right__icon__wrapper{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 2px;
+                        transition: all ease .1s;
+                        display: none;
+                        .player__queue__recommened__song__right__like__icon{
+                            font-size: 1rem;
+                            color: $purple-color;
+                            margin-top: 1px;
+                        }
+                        .player__queue__recommened__song__right__more__icon{
+                            font-size: 1rem;
+                            color: $gray-color-1;
+                        }
+                    }
+                    .player__queue__recommened__song__right__icon__wrapper:hover{
+                        background-color: $alpha-bg-color;
+                    }
+                }
+           }
+           .player__queue__recommened__song:hover{
+               background-color: $alpha-bg-color;
+               border-radius: 5px;
+               cursor: pointer;
+           }
+           .player__queue__recommened__song:hover .player__queue__recommened__song__right__icon__wrapper{
+               display: flex;
+               cursor: pointer;
+           }
+           .player__queue__recommened__song:hover .player__queue__recommened__song__img__wrapper::after{
+                background-color: rgba( 0,0,0,0.4 );
+           }
+           .player__queue__recommened__song:hover .player__queue__recommened__song__img__wrapper .player__queue__recommened__song__icon{
+                display: block;
+            }
+       }
+   }
+
+   .player__queue__listen__recently__songs{       
+        display: none;
+        flex-direction: column;
+        padding: 0 13px;
+        overflow-y: auto;
+            .player__queue__listen__recently__song{
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .player__queue__listen__recently__song__left{
+                    display: flex;
+                    .player__queue__listen__recently__song__img__wrapper{
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 5px;
+                        margin-right: 10px;
+                        position: relative;
+                        .player__queue__listen__recently__song__img{
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 5px;
+                            object-fit: cover;
+                        }
+                        .player__queue__listen__recently__song__icon{
+                            font-size: 1rem;
+                            color: $white-color;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                            z-index: 2;
+                            display: none;
+                        }
+                    }
+                    .player__queue__listen__recently__song__img__wrapper::after{
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: rgba( 0,0,0,0.2 );
+                        border-radius: 5px;
+                        z-index: 1;
+                        transition: all ease .25s;
+                    }
+                    .player__queue__listen__recently__song__data{
+                         .player__queue__listen__recently__song__name{
+                             @include text-style( $fs-14 , $medium , $lh-5 , rgba(255,255,255,0.7), left );
+                             transition: all ease .1s;
+                         }
+                         .player__queue__listen__recently__song__singer{
+                             @include text-style( $fs-12 , $medium , $lh-5 , $gray-color-2 , left );
+                         }
+                    }
+                }
+                .player__queue__listen__recently__song__right{
+                    display: flex;
+                    .player__queue__listen__recently__song__right__icon__wrapper{
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 2px;
+                        transition: all ease .1s;
+                        display: none;
+                        .player__queue__listen__recently__song__right__like__icon{
+                            font-size: 1rem;
+                            color: $purple-color;
+                            margin-top: 1px;
+                        }
+                        .player__queue__listen__recently__song__right__more__icon{
+                             font-size: 1rem;
+                             color: $gray-color-1;
+                        }
+                    }
+                    .player__queue__listen__recently__song__right__icon__wrapper:hover{
+                        background-color: $alpha-bg-color;
+                    }
+                }
+            }
+            .player__queue__listen__recently__song:hover{
+                background-color: $gray-color-3;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .player__queue__listen__recently__song:hover .player__queue__listen__recently__song__right__icon__wrapper{
+                display: flex;
+                cursor: pointer;
+            }
+            .player__queue__listen__recently__song:hover .player__queue__listen__recently__song__img__wrapper .player__queue__listen__recently__song__icon{
+                display: block;
+            }
+            .player__queue__listen__recently__song:hover .player__queue__listen__recently__song__img__wrapper::after{
+                 background-color: rgba( 0,0,0,0.4 );
+             }  
+             .player__queue__listen__recently__song:hover .player__queue__listen__recently__song__left .player__queue__listen__recently__song__data .player__queue__listen__recently__song__name{
+                 color: $white-color;
+             }  
+    }
+}
+@include respond(tablet){
+    .player__queue{
+        position: fixed;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        background-color: #3A323B;
+        width: 320px;
+        min-height: calc(100vh - 90px);
+        z-index: 99999;
+        transition: all ease .7s;
+    }
+    .player__queue.active{
+        transform: translateX(0);
+    }
+}

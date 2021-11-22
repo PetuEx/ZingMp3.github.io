@@ -1,0 +1,690 @@
+.main__page{
+    width: 1360px;
+    .main__page__header{
+        padding: 0 30px;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .main__page__header__left{
+            display: flex;
+            align-items: center;
+            .main__page__header__control{
+                width: 60px;
+                margin-right: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .button{
+                    font-size: 1.2rem;
+                    color: $gray-color-1;
+                    cursor: pointer;
+                }
+            }   
+            .main__page__header__search__bar{
+                display: flex;
+                align-items: center;
+                height: 40px;
+                position: relative;
+                .main__page__header__search__icon__wrapper{
+                    width: 40px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 100px 0 0 100px;
+                    background-color: $alpha-bg-color;
+                    .main__page__header__search__icon{
+                        font-size: 1.2rem;
+                        color: $gray-color-1;
+                    }
+                }
+                .main__page__header__search__input{
+                    width: 500px;
+                    height: 40px;
+                    border: none;
+                    outline: none;
+                    background-color: $alpha-bg-color;
+                    border-radius: 0 100px 100px 0;                
+                }
+                .main__page__header__search__input::placeholder{
+                    @include text-style( $fs-13 , normal , 1 , $gray-color-1 , left )
+                }
+                .suggest__modal{
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: transparent;
+                    z-index: 4;
+                    display: none;
+                }
+                .suggest__block{
+                    position: absolute;
+                    width: 540px;
+                    background-color: $searchbar-color;
+                    top: 100%;
+                    left: 0;
+                    border-radius: 0 0 20px 20px;
+                    padding: 13px 10px;
+                    z-index: 5;
+                    display: none;
+                    .suggest__title{
+                        padding: 0 10px 8px;
+                        @include text-style( $fs-14 , $bold , $lh-5 , $white-color , left);
+                    }
+                    .suggest__list{
+                        .suggest__item{
+                            padding: 10px 8px;
+                            display: flex;
+                            align-items: center;
+                            border-radius: 5px;
+                            .suggest__item__icon{
+                                font-size: 1rem;
+                                color: $white-color;
+                                margin-right: 10px;
+                            }
+                            .suggest__item__content{
+                                @include text-style( $fs-14 , $bold , $lh-5 , $white-color , left);
+                            }
+                        }
+                        .suggest__item:hover{
+                            background-color: $alpha-bg-color;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .main__page__header__search__bar.active{
+                .main__page__header__search__icon__wrapper{
+                    background-color: $searchbar-color;
+                    border-radius: 20px 0 0 0;
+                    z-index: 5;
+                }
+                .main__page__header__search__input{
+                    background-color: $searchbar-color;
+                    border-radius: 0 20px 0 0;
+                    z-index: 5;
+                }
+                .suggest__modal{
+                    display: block;
+                }
+                .suggest__block{
+                    display: block;
+                }
+            }
+        }
+        .main__page__header__right{
+            display: flex;
+            align-items: center;
+            .level__setting__list{
+                display: flex;
+                align-items: center;
+                .level__setting__item{
+                    width: 40px;
+                    height: 40px;
+                    background-color: $alpha-bg-color;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-right: 10px;
+                    .level__setting__item__icon{
+                        font-size: 1rem;
+                        color: $gray-color-1;
+                    }
+                }
+            }
+            .user__icon__wrapper{
+                width: 38px;
+                height: 38px;
+                border-radius: 50%;
+                background-color: $alpha-bg-color;
+                .user__icon{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    // Overview
+    .main__page__overview{
+        .main__page__user__profile__container{
+            margin-top: 30px;
+            position: relative;
+            .main__page__user__profile{
+                .main__page__user__profile__avatar__wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .main__page__user__profile__avatar{
+                        width: 95px;
+                        height: 95px;
+                        border-radius: 50%;
+                    }
+                    .main__page__user__profile__name{
+                        letter-spacing: 2px;
+                        margin: 10px auto 5px;
+                        @include text-style( $fs-32 , $bold , $lh-3 , $white-color , center );
+                    }
+                }
+            }
+    
+            .main__page__user__profile__action{
+                position: absolute;
+                top: 0;
+                right: 30px;
+                display: flex;
+                align-items: center;
+                .user__profile__action__vip__button{
+                    @include button( $yellow-color , 19px , $fs-12 , normal , 1 , $black-color );
+                    margin-right: 5px;
+                }
+                .user__profile__action__get__code__button{
+                    @include button( $alpha-bg-color , 19px , $fs-12 , normal , 1 , $white-color );
+                    margin-right: 7px;
+                }
+                .user__profile__action__more__options__button{
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    background-color: $alpha-bg-color;
+                    padding: 5px;
+                    position: relative;
+                    cursor: pointer;       
+    
+                    .user__profile__action__more__options__button__hover{
+                        position: absolute;
+                        bottom: calc( 100% + 13px );
+                        left: -25px;
+                        transform: translateX(12.5px);
+                        width: 50px;
+                        height: 25px;
+                        border-radius: 5px;
+                        background-color: $alpha-bg-color;
+                        display: none;
+                        justify-content: center;
+                        align-items: center;
+                        @include text-style( $fs-12 , normal , 1 , $white-color , center );
+                    }
+                    .user__profile__action__more__options__button__hover::after{
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        border-top: 8px solid $alpha-bg-color;
+                        border-left: 8px solid transparent;
+                        border-right: 8px solid transparent;
+                    }
+                    .user__profile__action__more__options__button__icon{
+                        font-size: 0.8rem;
+                        color: $white-color;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        margin-top: 1px;
+                    }
+                }
+                .user__profile__action__more__options__button:hover .user__profile__action__more__options__button__hover{
+                    display: flex;
+                }
+            }
+            
+            .user__profile__action__more__options__button__exit{
+                position: absolute;
+                top: 30px;
+                right: 0;
+                width: 210px;
+                height: 56px;
+                padding: 6px 0;
+                border-radius: 8px;
+                background-color: $alpha-bg-color;
+                display: none;
+                text-decoration: none;
+                .user__profile__action__more__options__button__exit__text{
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 15px;
+                    @include text-style( $fs-14 , normal , 1 , $gray-color-1 , left );
+                    .user__profile__action__more__options__button__exit__text__icon{
+                        font-size: 1.5rem;
+                        color: $gray-color-1;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .user__profile__action__more__options__button__exit.active{
+                display: block;
+            }
+        }
+        .main__page__user__profile__playlist__navbar__list{
+            display: inline-flex;
+            align-items: center;
+            background-color: $alpha-bg-color;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 4px;
+            border-radius: 100px;
+            .main__page__user__profile__playlist__navbar__item{
+                padding: 7px 25px;
+                cursor: pointer;
+                @include text-style( $fs-12 , normal , 1 , $gray-color-1 , center );
+                transition: all ease .1s;
+            }
+            .main__page__user__profile__playlist__navbar__item.profile__navbar__item__active{
+                background-color: $navbar-item-active-color;
+                border-radius: 100px;
+                color: $white-color;
+            }
+        }
+        .mylist__wrapper{
+            .mylist__header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .mylist__header__left{
+                    display: flex;
+                    align-items: center;
+                    .mylist__header__left__text{
+                        @include text-style ( $fs-20 , $bold , $lh-4 , $white-color , left );
+                    }
+                    .mylist__header__left__icon{
+                        font-size: 1.2rem;
+                        color: $white-color;
+                        margin-left: 10px;
+                    }
+                }
+                .mylist__header__right{
+                    .mylist__header__right__upload__button{
+                        margin-right: 15px;
+                        @include button( $alpha-bg-color , 19px , $fs-12 , normal , $lh-4 , $white-color );
+                        .mylist__header__right__upload__button__icon{
+                            margin-right: 5px;
+                        }
+                    }
+                    .mylist__header__right__play__all__button{
+                        @include button( $purple-color , 19px , $fs-12 , normal , $lh-4 , $white-color );
+                        cursor: pointer;
+                        .mylist__header__right__play__all__button__icon{
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+            .mylist__slider{
+                position: relative;
+                height: 230px;
+                .slide{
+                    position: absolute;
+                    transition: all ease .5s;
+                    cursor: pointer;
+                }
+                .slide.slide__1--active{
+                    width: 162px;
+                    height: 162px;
+                    object-fit: cover;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    opacity: 0.6;
+                    z-index: 1;
+                }
+                .slide.slide__2--active{
+                    width: 196px;
+                    height: 196px;
+                    object-fit: cover;
+                    left: 25px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    opacity: 0.7;
+                    z-index: 2;
+                }
+                .slide.slide__3--active{
+                    width: 230px;
+                    height: 230px;
+                    object-fit: cover;
+                    left: 50px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    opacity: 0.9;
+                    z-index: 3;
+                }
+                .slide img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+            }
+            .music__list{
+                max-height: 244px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                .music__item{
+                    padding: 10px;
+                    .music__item__left{
+                        display: flex;
+                        .music__item__left__avatar__wrapper{
+                            width: 40px;
+                            height: 40px;
+                            position: relative;
+                            margin-right: 10px;
+                            .music__item__left__avatar__wrapper__icon{
+                                position: absolute;
+                                color: $white-color;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                                font-size: 1.1rem;
+                                display: none;        
+                            }
+                            .music__item__left__avatar{
+                                width: 40px;
+                                height: 40px;
+                                object-fit: cover;
+                                border-radius: 5px;
+                            }
+                            .music__item__left__avatar__gif{
+                                position: absolute;
+                                width: 18px;
+                                height: 18px;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%,-50%);
+                                display: none;
+                            }
+                        }
+                        .music__item__left__data{
+                            .music__item__left__data__name{
+                                @include text-style( $fs-14 , $medium , $lh-5 , $white-color , left );
+                            }
+                            .music__item__left__data__singer{
+                                @include text-style( $fs-12 , normal , $lh-6 , $gray-color-2 , left );
+                                margin-top: 3px;
+                            }
+                        }
+                    }
+                    .music__item__right{
+                        display: flex;
+                        height: 100%;
+                        align-items: center;
+                        justify-content: space-between;
+                        .music__time{
+                            @include text-style( $fs-12 , normal , $lh-6 , $gray-color-2 , left );
+                        }
+                        .music__options{
+                            display: flex;
+                            align-items: center;
+                            .music__options__more__wrapper,
+                            .music__options__like__wrapper{
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                padding: 3px;
+                                margin: 0 2px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                                transition: all ease .25s;
+                                .music__options__like{
+                                    font-size: 1rem;
+                                    color: $purple-color;
+                                    margin-left: 1px;
+                                    margin-top: 1px;
+                                }
+                            }                    
+                            .music__options__more__wrapper{
+                                .music__options__more{
+                                    font-size: 0.7rem;
+                                    color: $white-color;
+                                    margin-left: 1px;
+                                    margin-bottom: 1px;
+                                }
+                            }
+                            .music__options__like__wrapper:hover,
+                            .music__options__more__wrapper:hover{
+                                background-color: $alpha-bg-color;
+                            }
+                        }
+                    }
+                }
+                .music__item.bg-active{
+                    background-color: $alpha-bg-color;
+                }
+                .music__item:hover{
+                    background-color: $alpha-bg-color;
+                    cursor: pointer;
+                }
+                .music__item:hover .music__item__left .music__item__left__avatar__wrapper .music__item__left__avatar__wrapper__icon{
+                    display: block;
+                }
+                .music__item.active .music__item__left .music__item__left__avatar__wrapper  .music__item__left__avatar__gif{
+                    display: block;
+                }
+                .music__item.icon-active .music__item__left .music__item__left__avatar__wrapper  .music__item__left__avatar__wrapper__icon{
+                    display: block;
+                }
+            }
+            .music__list::-webkit-scrollbar{
+                width: 5px;
+                background-color: transparent;
+            }
+            .music__list::-webkit-scrollbar-thumb{
+                width: 5px;
+                background-color: $alpha-bg-color;
+                border-radius: 100px;
+            }
+        }
+    }
+    .main__page__discover__gallery{
+        .main__page__discover__gallery__slide__wrapper{
+            position: relative;
+            .main__page__discover__gallery__slide{
+                display: block;
+                width: calc(100% / 3);
+                height: 244px;
+                padding: 15px;
+                transition: all ease 1s;
+                .main__page__discover__gallery__slide__img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+            .main__page__discover__gallery__slide.slide-1{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .main__page__discover__gallery__slide.slide-2{
+                position: absolute;
+                left: calc(100% / 3);
+            }
+            .main__page__discover__gallery__slide.slide-3{
+                position: absolute;
+                left: calc(2*(100% / 3));
+                top: 0;
+            }
+            .main__page__discover__gallery__control{
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+                background-color: rgba(255,255,255,0.2);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: calc(244px / 2);
+                transform: translateY(-50%);
+                cursor: pointer;
+                .main__page__discover__gallery__control__icon{
+                    color: $white-color;
+                    font-size: 1.5rem;
+                }
+            }
+            .main__page__discover__gallery__control__left{
+                left: 30px;
+            }
+            .main__page__discover__gallery__control__right{
+                right: 30px;
+            }
+        }
+            
+    }
+}
+.main__page::-webkit-scrollbar{
+    width: 5px;
+    background-color: transparent;
+}
+.main__page::-webkit-scrollbar-thumb{
+    width: 5px;
+    background-color: $gray-color-1;
+    border-radius: 100px;
+}
+@include respond(tablet){
+    .grid.wide{
+        width: calc(100vw - 120px);
+        margin: 0 auto;
+    }
+    .main__page{
+        margin-left: 70px;
+        height: calc(100vh - 90px);
+        width: calc(100vw - 70px);
+        padding: 0 30px;
+        .main__page__header{
+            justify-content: initial;
+            padding: 0;
+            .main__page__header__left{
+                .main__page__header__search__bar{
+                    .main__page__header__search__input{
+                        width: 362px;
+                    }
+                    .suggest__block{
+                        width: 402px;
+                    }
+                }
+
+            }
+            .main__page__header__right{
+                .level__setting__list{
+                    .level__setting__item:nth-child(1){
+                        margin-left: 10px;
+                    }
+                    .level__setting__item:nth-child(2){
+                        display: none;
+                    }
+                }
+            }
+        }
+        .main__page__overview{
+           
+            .main__page__user__profile__playlist__navbar__list{
+                .main__page__user__profile__playlist__navbar__item:nth-child(2),
+                .main__page__user__profile__playlist__navbar__item:nth-child(6){
+                    display: none;
+                }
+            }
+            .mylist__wrapper {
+                .mylist__header {
+                    width: calc(100vw - 120px);
+                }
+                .music__list{
+                    padding-left: 130px;
+                    .music__item{
+                        .music__item__right{
+                            justify-content: flex-end;
+                            .music__time{
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@include respond(mobile){
+    .grid.wide{
+        width:calc(100vw - 20px);
+        margin: 0 auto;
+    }
+    .main__page{
+        margin: 0;
+        width: 100vw;
+        padding: 0 5px;
+        .main__page__header{
+            display: flex;
+            justify-content: space-between;
+            .main__page__header__left{
+                .main__page__header__control{
+                    display: none;
+                }
+                .main__page__header__search__bar{
+                    .main__page__header__search__input{
+                        width: 187px;
+                    }
+                    .suggest__block{
+                        width: 227px;
+                    }
+                }
+            }
+            .main__page__header__right{
+                .level__setting__list{
+                    margin-left: 10px;
+                    .level__setting__item:nth-child(1),.level__setting__item:nth-child(2){
+                        display: none;
+                    }
+                }
+            }
+        }
+        .main__page__overview{
+            .main__page__user__profile__container{
+                .main__page__user__profile__action{
+                    display: none;
+                }
+            }
+            .main__page__user__profile__playlist__navbar__list{
+                margin-bottom: 10px!important;
+                .main__page__user__profile__playlist__navbar__item{
+                    padding: 7px 5px;
+                    margin: 0 4px;
+                    cursor: pointer;
+                    @include text-style( $fs-12 , normal , 1 , $gray-color-1 , center );
+                    transition: all ease .1s;
+
+                }
+                .main__page__user__profile__playlist__navbar__item:nth-child(5),
+                .main__page__user__profile__playlist__navbar__item:nth-child(6){
+                    display: none;
+                }
+            }
+            .mylist__wrapper{
+                .mylist__header{
+                    width: inherit;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    .mylist__header__right{
+                        .mylist__header__right__upload__button{
+                            display: none;
+                        }
+                    }
+                }
+                .c-3.gutter{
+                    display: none;
+                }
+                .music__list{
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@mixin text-style( $fs , $fw , $lh , $cl , $t-a ){
+    font-size: $fs;
+    font-weight: $fw;
+    line-height: $lh;
+    color: $cl;   
+    text-align: $t-a; 
+}
+@mixin button( $b-bg-cl , $pd-l-r , $b-fs , $b-fw , $b-lh , $b-cl ){
+    display: inline-flex;
+    align-items: center;
+    background-color: $b-bg-cl;
+    border-radius: 100px;
+    padding: 6px $pd-l-r ;
+    text-decoration: none;
+    font-size: $b-fs;
+    font-weight: $b-fw;
+    line-height: $b-lh;
+    color: $b-cl;
+    text-align: center;
+}
+@mixin respond($breakpoint){
+    @if $breakpoint == mobile {
+        @media (max-width: 740px){@content};
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: 1023px){@content};
+    }
+    @if $breakpoint == pc {
+        @media (max-width: 1024px){@content};
+    }
+}

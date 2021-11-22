@@ -1,0 +1,56 @@
+.grid{
+    width: 100%;
+    display: block;
+    padding: 0;
+}
+.grid.wide{
+    width: 1175px;
+    margin: 0 auto;
+}
+.gird.wide__main__page{
+    width: 1206px;
+    margin: 0 auto;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.gutter{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.row.gutter.no-gutter{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.c-2{
+    flex: 1 0 16.6667%;
+    max-width: 16.6667%;
+}
+.c-3{
+    flex: 1 0 25%;
+    max-width: 25%;
+}
+.c-6{
+    flex: 1 0 50%;
+    max-width: 50%;
+}
+.c-8{
+    flex: 1 0 66.6667%;
+    max-width: 66.6667%; 
+}
+.c-9{
+    flex: 1 0 75%;
+    max-width: 75%;
+}
+.c-12{
+    flex: 1 0 100%;
+    max-width: 100%;
+}
+@include respond(mobile){
+    .s-c-12{
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+}
