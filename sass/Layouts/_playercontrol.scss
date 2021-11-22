@@ -350,7 +350,6 @@
 }
 @include respond(mobile){
     .player__control{
-        position: relative;
         .player__control__media__aminate{
             display: none;
         }
